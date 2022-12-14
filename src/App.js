@@ -19,6 +19,10 @@ function App() {
         />
         <Diff diff={currentDifficulty} />
       </div>
+      <p className={appStyle.desc}>
+        Learning React application building blocks: components, state, props,
+        callback functions, etc.
+      </p>
     </div>
   );
 }

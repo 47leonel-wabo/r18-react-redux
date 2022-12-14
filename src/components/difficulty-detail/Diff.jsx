@@ -5,6 +5,7 @@ const Diff = ({ diff }) => {
   if (diff) {
     return (
       <div className={dStyle.detail}>
+        Selected difficulty:
         <strong>{`${diff.name}`}</strong>
       </div>
     );

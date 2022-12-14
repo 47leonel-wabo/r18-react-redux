@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Diff from "./components/difficulty-detail/Diff";
+import MenuList from "./components/menu-list/MenuList";
+import appStyle from "./style.module.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [currentDifficulty, setCurrentDifficulty] = useState(null);
+
+    const handleDifficultySelection = (difficulty) => {
+        setCurrentDifficulty(difficulty);
+    };
+    return (
+        <div className={appStyle.appRoot}>
+            <h2 className={appStyle.title}>
+                Choose your React course difficulty
+            </h2>
+            <div className={appStyle.content}>
+                <MenuList handleSelection={handleDifficultySelection} />
+                <Diff diff={currentDifficulty} />
+            </div>
+        </div>
+    );
 }
 
 export default App;

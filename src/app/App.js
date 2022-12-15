@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { IMG_SERVER } from "../api/config";
 import { TVShowAPI } from "../api/tv-show-api";
 import "./App.css";
+import TvLogo from "./components/logo/TvLogo";
 import TvShowDetail from "./components/tv-details/TvShowDetail";
+import TvShowItem from "./components/tv-show/TvShowItem";
 import style from "./style.module.css";
 
 function App() {
@@ -29,8 +31,7 @@ function App() {
       <div className={style.header}>
         <div className="row">
           <div className="col-4">
-            <div>LOGO</div>
-            <div>Subtitle</div>
+            <TvLogo />
           </div>
           <div className="col-sm-12 col-lg-4">
             <input style={{ width: "100%" }} type="text" />
@@ -42,7 +43,16 @@ function App() {
           {currentTvShow && <TvShowDetail tvShow={currentTvShow} />}
         </div>
       </div>
-      <div className={style.recommendations}>Recommendations</div>
+      <div className={style.recommendations}>
+        {currentTvShow && (
+          <TvShowItem
+            tvShow={currentTvShow}
+            onClick={(tvShow) => {
+              console.log("Show clicked", tvShow);
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 }

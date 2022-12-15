@@ -1,0 +1,29 @@
+.container {
+}
+.title {
+  font-weight: 400;
+  font-size: 30px;
+  margin: 16px 0;
+}
+.average {
+  color: goldenrod;
+  margin-left: 8px;
+}
+.overview {
+  font-weight: 400;
+  font-family: Roboto;
+  height: 175px;
+  overflow: hidden;
+}
+.overview:hover {
+  overflow-y: auto;
+}
+.overview::-webkit-scrollbar {
+  display: none;
+}
+.rating_vote {
+  display: flex;
+  padding: 4px 0;
+  align-items: center;
+  margin-bottom: 4px;
+}

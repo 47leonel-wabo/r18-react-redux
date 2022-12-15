@@ -1,0 +1,19 @@
+.container {
+  background: #3e3e3e;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+.header {
+  flex: 2;
+}
+.details {
+  flex: 4;
+}
+.overview {
+  width: 50%;
+}
+.recommendations {
+  flex: 2;
+}

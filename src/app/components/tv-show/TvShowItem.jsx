@@ -4,9 +4,9 @@ import style from "./tvshow.module.css";
 
 const MAX_CHARACTERS = 25;
 
-const TvShowItem = ({ tvShow, onClick }) => {
+const TvShowItem = ({ tvShow, onClick_ }) => {
   const handleShowClick = () => {
-    onClick(tvShow);
+    onClick_(tvShow);
   };
 
   return (
@@ -18,7 +18,7 @@ const TvShowItem = ({ tvShow, onClick }) => {
       />
       <div className={style.title}>
         {tvShow.original_name.length > MAX_CHARACTERS
-          ? tvShow.original_name.slice(0, 20) + "..."
+          ? tvShow.original_name.slice(0, 30) + "..."
           : tvShow.original_name}
       </div>
     </div>

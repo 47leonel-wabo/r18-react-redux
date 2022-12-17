@@ -9,15 +9,32 @@ import style from "./style.module.css";
 
 function App() {
   const [currentTvShow, setCurrentTvShow] = useState();
+  const [recommendationList, setRecommendationList] = useState([]);
 
   async function fetchMostPopular() {
     const results = await TVShowAPI.fetchPopular();
     if (results.length > 0) setCurrentTvShow(results[0]);
   }
 
+  const fetchRecommendations = async (tvId) => {
+    const resultList = await TVShowAPI.fetchRecommendations(tvId);
+    if (resultList.length > 0) setRecommendationList(resultList.slice(0, 10));
+  };
+
+  const updateCurrentTvShow = (tvShow) => {
+    setCurrentTvShow(tvShow);
+  };
+
   useEffect(() => {
     fetchMostPopular();
   }, []);
+
+  useEffect(
+    function () {
+      if (currentTvShow) fetchRecommendations(currentTvShow.id);
+    },
+    [currentTvShow]
+  );
 
   return (
     <div
@@ -44,14 +61,14 @@ function App() {
         </div>
       </div>
       <div className={style.recommendations}>
-        {currentTvShow && (
-          <TvShowItem
-            tvShow={currentTvShow}
-            onClick={(tvShow) => {
-              console.log("Show clicked", tvShow);
-            }}
-          />
-        )}
+        {recommendationList &&
+          recommendationList.map((tvShowElement) => (
+            <TvShowItem
+              key={tvShowElement.id}
+              tvShow={tvShowElement}
+              onClick_={updateCurrentTvShow}
+            />
+          ))}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { IMG_SERVER } from "../api/config";
 import { TVShowAPI } from "../api/tv-show-api";
 import "./App.css";
 import TvLogo from "./components/logo/TvLogo";
+import SearchBar from "./components/search-bar/SearchBar";
 import TvShowDetail from "./components/tv-details/TvShowDetail";
 import TvShowItem from "./components/tv-show/TvShowItem";
 import style from "./style.module.css";
@@ -51,7 +52,7 @@ function App() {
             <TvLogo />
           </div>
           <div className="col-sm-12 col-lg-4">
-            <input style={{ width: "100%" }} type="text" />
+            <SearchBar handleChange={(value) => console.log("VALUE", value)} />
           </div>
         </div>
       </div>

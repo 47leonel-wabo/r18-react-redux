@@ -1,0 +1,29 @@
+.container {
+  background: #3e3e3e;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow: hidden;
+}
+.header {
+  flex: 2;
+}
+.details {
+  flex: 4;
+}
+.overview {
+  width: 50%;
+}
+.recommendations {
+  flex: 2;
+  display: flex;
+  visibility: 100vw;
+  overflow-x: hidden;
+}
+.recommendations:hover {
+  overflow-x: overlay;
+}
+.recommendations::-webkit-scrollbar {
+  display: none;
+}

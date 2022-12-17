@@ -1,0 +1,15 @@
+.container {
+}
+.title {
+  display: flex;
+  align-items: center;
+}
+.title span {
+  margin-left: 8px;
+}
+.subtitle {
+  line-height: 8px;
+  font-family: Roboto;
+  font-weight: 200;
+  margin-bottom: 8px;
+}

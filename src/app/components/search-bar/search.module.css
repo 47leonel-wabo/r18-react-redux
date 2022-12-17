@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(122, 122, 122, 0.425);
+  background: rgba(77, 77, 77, 0.5);
+}
+.search {
+  padding: 4px;
+}
+.inputSearch {
+  width: 100%;
+  padding: 0 4px;
+  border: none;
+  color: white;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  background-color: transparent;
+}
+.inputSearch::placeholder {
+  color: lightgray;
+}
+.inputSearch:focus {
+  outline-width: 0;
+}

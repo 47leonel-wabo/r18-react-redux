@@ -22,6 +22,11 @@ function App() {
     if (resultList.length > 0) setRecommendationList(resultList.slice(0, 10));
   };
 
+  async function handleSearch(keyWords) {
+    const results = await TVShowAPI.tvShowSearch(keyWords);
+    if (results.length > 0) setCurrentTvShow(results[0]);
+  }
+
   const updateCurrentTvShow = (tvShow) => {
     setCurrentTvShow(tvShow);
   };
@@ -52,7 +57,7 @@ function App() {
             <TvLogo />
           </div>
           <div className="col-sm-12 col-lg-4">
-            <SearchBar handleChange={(value) => console.log("VALUE", value)} />
+            <SearchBar handleChange={handleSearch} />
           </div>
         </div>
       </div>

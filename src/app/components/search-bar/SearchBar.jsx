@@ -7,13 +7,14 @@ const SearchBar = ({ handleChange }) => {
 
   function inputChange(event) {
     setInputValue(event.target.value);
-    if (event.key === "enter_command") {
-      if (inputValue.trim().length > 6) {
-        handleChange(inputValue);
-        setInputValue("");
-      }
-    }
   }
+
+  const handleKeyUp = (event) => {
+    if (inputValue.trim().length >= 3 && event.key === "Enter") {
+      handleChange(inputValue);
+      setInputValue("");
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -23,6 +24,7 @@ const SearchBar = ({ handleChange }) => {
       <input
         className={style.inputSearch}
         value={inputValue}
+        onKeyUp={handleKeyUp}
         onChange={inputChange}
         placeholder={`Search TV show you may like`}
         type="text"

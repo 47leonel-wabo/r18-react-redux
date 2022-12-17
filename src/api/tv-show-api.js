@@ -17,4 +17,11 @@ export class TVShowAPI {
     return response.data.results;
     // return FAKE_RECOMMENDATIONS;
   }
+
+  static async tvShowSearch(keyWords) {
+    const response = await axios.get(
+      `${BASE_API_URL}search/tv?api_key=${API_KEY}&query=${keyWords}`
+    );
+    return response.data.results;
+  }
 }

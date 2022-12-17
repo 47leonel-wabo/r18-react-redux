@@ -66,6 +66,9 @@ function App() {
           {currentTvShow && <TvShowDetail tvShow={currentTvShow} />}
         </div>
       </div>
+      {recommendationList && (
+        <h4 className={style.rec_heading}>You may also like</h4>
+      )}
       <div className={style.recommendations}>
         {recommendationList &&
           recommendationList.map((tvShowElement) => (

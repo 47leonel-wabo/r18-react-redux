@@ -15,6 +15,9 @@
 .overview {
   width: 50%;
 }
+.rec_heading {
+  font-weight: 300;
+}
 .recommendations {
   flex: 2;
   display: flex;

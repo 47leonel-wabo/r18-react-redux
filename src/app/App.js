@@ -1,3 +1,4 @@
+import ExpenseInput from "../components/expense-input/ExpenseInput";
 import style from "./app.module.css";
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
         <div className={style.income}>Income input</div>
       </div>
       <div className={style.content}>
-        <div className={style.in}>Expense input</div>
+        <div className={style.in}>
+          <ExpenseInput />
+        </div>
         <div className={style.hist}>Expense history</div>
         <div className={style.total}>Expense total</div>
       </div>

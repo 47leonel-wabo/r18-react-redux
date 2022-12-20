@@ -1,0 +1,31 @@
+.container {
+  margin: 4px;
+}
+.in {
+  margin: 8px;
+  border: 1px solid lightgray;
+  border-radius: 18px;
+  padding: 2px 8px;
+  font-size: 13px;
+}
+.in:focus {
+  outline-width: 0;
+}
+.btn {
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  padding: 2px 16px;
+  background: goldenrod;
+  border-radius: 15px;
+  color: white;
+}
+.btn:disabled {
+  background: white;
+  color: lightgray;
+  border: 1px solid lightgray;
+}
+.btn:hover {
+  background: rgb(179, 153, 10);
+  transition: all 0.6s ease;
+}

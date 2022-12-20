@@ -3,7 +3,7 @@ import expenseSlice from "./expense/expense-slice";
 
 const store = configureStore({
   reducer: {
-    EXPENSE: expenseSlice,
+    EXPENSES: expenseSlice,
   },
 });
 

@@ -14,6 +14,12 @@ const initialState = [
 const expenseSlice = createSlice({
   name: "expenseSlice",
   initialState,
+  reducers: {
+    addExpenseAction: (currentSlice, action) => {
+      currentSlice.push(action.payload);
+    },
+  },
 });
 
 export default expenseSlice.reducer;
+export const { addExpenseAction } = expenseSlice.actions;

@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./note.module.css";
+import style from "./not.module.css";
 
 const NotFound = () => {
   return <div>NotFound</div>;

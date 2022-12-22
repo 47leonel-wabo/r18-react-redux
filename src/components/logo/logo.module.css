@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.container :hover {
+  color: tomato;
+  transition: all 0.6s ease;
+}
+.title {
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: 600;
+}
+.subtitle {
+  font-family: Lato;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 2px;
+}

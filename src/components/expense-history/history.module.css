@@ -3,3 +3,17 @@
   font-weight: 600;
   font-family: Lato;
 }
+.empty {
+  border: none;
+  height: 80px;
+  background: whitesmoke;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(151, 151, 151);
+}
+.mdg {
+  font-family: Lato;
+  font-weight: 400;
+}

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.in {
+  padding: 2px 8px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 15px;
+  background: #3e3e3e85;
+  color: white;
+}
+.in::placeholder {
+  color: white;
+}
+.in:focus {
+  outline-width: 0;
+}
+.btn {
+  padding: 2px 8px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  background-color: rgb(180, 130, 2);
+  color: whitesmoke;
+  font-size: 14px;
+}
+.btn:hover {
+  background-color: rgb(199, 143, 3);
+  transition: all 0.65s ease;
+}

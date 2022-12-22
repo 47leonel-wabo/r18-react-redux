@@ -14,7 +14,7 @@ const Expense = ({ expense }) => {
       <div className={style.bottom}>
         <div className={style.actions}>
           <button className={style.del} onClick={() => handleDelete()}>
-            Del
+            Remove
           </button>
         </div>
         <div className={style.price}>${expense.price}</div>

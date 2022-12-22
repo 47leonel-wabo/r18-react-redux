@@ -1,4 +1,5 @@
 import ExpenseHistory from "../components/expense-history/ExpenseHistory";
+import AppLogo from "../components/logo/AppLogo";
 import BudgetInput from "../containers/expense-budget/BudgetInput";
 import ExpenseInput from "../containers/expense-input/ExpenseInput";
 import SumExpense from "../containers/total-expense/SumExpense";
@@ -8,7 +9,9 @@ function App() {
   return (
     <div className={style.container}>
       <div className={style.header}>
-        <div className={style.logo}>Logo</div>
+        <div className={style.logo}>
+          <AppLogo />
+        </div>
         <div className={style.income}>
           <BudgetInput />
         </div>

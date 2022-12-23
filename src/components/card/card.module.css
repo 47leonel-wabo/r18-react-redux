@@ -1,0 +1,14 @@
+.container {
+  cursor: pointer;
+}
+.sub {
+  font-size: 14px;
+}
+.content {
+  font-family: Lato;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

@@ -4,7 +4,10 @@ import NoteCard from "../../components/card/NoteCard";
 
 const NotesList = ({ notes, handleClick, handleDelete }) => {
   return (
-    <div className={style.container}>
+    <div
+      className={`row justify-content-center ${style.container}`}
+      style={{ width: "100vw" }}
+    >
       {notes.map((note) => (
         <NoteCard
           key={note.id}

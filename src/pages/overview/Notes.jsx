@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import NotesList from "../../container/notes-list/NotesList";
 import { notesSelector } from "../../store/note/note-slice";
 import style from "./notes.module.css";
 
 const Notes = () => {
   const notes = useSelector(notesSelector);
+  const navigate = useNavigate();
 
-  const handleClick = (note) => alert(`Navigate to note details ${note.id}`);
+  const handleClick = (note) => navigate(`note/${note.id}`);
   const handleDelete = (note) => alert(`Delete note ${note.id}`);
 
   return (

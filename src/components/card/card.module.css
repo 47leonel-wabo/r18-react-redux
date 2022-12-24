@@ -1,5 +1,6 @@
 .container {
   cursor: pointer;
+  margin-right: 8px;
 }
 .sub {
   font-size: 14px;

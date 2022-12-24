@@ -5,6 +5,12 @@
       "title": "Note title",
       "content": "The note content",
       "created_at": "21/12/2022"
+    },
+    {
+      "id": 2,
+      "title": "Note title 2",
+      "content": "The note content 2",
+      "created_at": "24/12/2022"
     }
   ]
 }

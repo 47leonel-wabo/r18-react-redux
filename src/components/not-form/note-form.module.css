@@ -1,0 +1,12 @@
+.container {
+  background: white;
+  padding: 32px;
+  border-radius: 15px;
+  font-family: Lato;
+}
+.btn {
+  text-align: right;
+}
+.icon {
+  cursor: pointer;
+}

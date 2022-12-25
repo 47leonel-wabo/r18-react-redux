@@ -12,7 +12,11 @@ const Header = () => {
         <AppLogo navigateHome={() => navigate("/")} />
       </div>
       <div className={`col-xs-12 col-sm-8 text-end ${style.add}`}>
-        <AppButton action={() => navigate("/note/new")}>Create note</AppButton>
+        {window.location.pathname !== "/note/new" && (
+          <AppButton action={() => navigate("/note/new")}>
+            Create note
+          </AppButton>
+        )}
       </div>
     </div>
   );

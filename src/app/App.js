@@ -6,7 +6,7 @@ import Header from "../components/header/Header";
 import { setNotes } from "../store/note/note-slice";
 import "./App.css";
 
-function App() {
+function App({ history }) {
   const dispatch = useDispatch();
 
   const getNotes = async () => {

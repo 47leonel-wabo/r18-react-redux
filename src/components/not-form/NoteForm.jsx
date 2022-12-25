@@ -5,11 +5,14 @@ import style from "./note-form.module.css";
 
 const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
   const [note, setNote] = useState({ title: "", content: "" });
-  //   const [disableBtn, setDisableBtn] = useState(true);
+  const [disableBtn, setDisableBtn] = useState(true);
+  const [formErrors, setFormErrors] = useState({ title: "", content: "" });
 
   function handleValueChange(event) {
     setNote((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   }
+
+  function formInputValidation() {}
 
   function submit() {
     handleSubmit({

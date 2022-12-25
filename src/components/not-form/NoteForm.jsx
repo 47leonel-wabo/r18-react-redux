@@ -1,18 +1,47 @@
 import React, { useState } from "react";
 import { PencilFill, TrashFill } from "react-bootstrap-icons";
+import { ValidatorService } from "../../services/validator";
 import AppButton from "../button/AppButton";
+import FieldError from "../field-error/FieldError";
 import style from "./note-form.module.css";
+
+const VALIDATOR = {
+  title: (value) =>
+    ValidatorService.min(value, 3) || ValidatorService.max(value, 20),
+  content: (value) =>
+    ValidatorService.min(value, 3) || ValidatorService.max(value, 255),
+};
 
 const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
   const [note, setNote] = useState({ title: "", content: "" });
-  const [disableBtn, setDisableBtn] = useState(true);
-  const [formErrors, setFormErrors] = useState({ title: "", content: "" });
+  const [formErrors, setFormErrors] = useState({
+    title: true,
+    content: true,
+  });
 
   function handleValueChange(event) {
-    setNote((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    const inputName = event.target.name;
+    const inputValue = event.target.value;
+
+    setNote((prev) => ({ ...prev, [inputName]: inputValue }));
+    formInputValidation(inputValue, inputName);
   }
 
-  function formInputValidation() {}
+  function formInputValidation(value, inputName) {
+    setFormErrors((prev) => ({
+      ...prev,
+      [inputName]: VALIDATOR[inputName](value),
+    }));
+  }
+
+  function disableBtn() {
+    for (const name in formErrors) {
+      if (formErrors[name]) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   function submit() {
     handleSubmit({
@@ -34,7 +63,7 @@ const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
   );
 
   const TitleInput = (
-    <>
+    <div className="mb-5">
       <label htmlFor="note-title" className="form-label">
         Title
       </label>
@@ -46,11 +75,12 @@ const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
         value={note.title}
         className="form-control"
       />
-    </>
+      <FieldError message={formErrors.title} />
+    </div>
   );
 
   const ContentInput = (
-    <>
+    <div className="mb-5">
       <label htmlFor="note-content" className="form-label">
         Content
       </label>
@@ -63,12 +93,15 @@ const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
         className="form-control"
         rows={5}
       />
-    </>
+      <FieldError message={formErrors.content} />
+    </div>
   );
 
   const FormButton = (
     <div className={style.btn}>
-      <AppButton action={submit}>Submit</AppButton>
+      <AppButton action={submit} disabled_={disableBtn()}>
+        Submit
+      </AppButton>
     </div>
   );
   return (

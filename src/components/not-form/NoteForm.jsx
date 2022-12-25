@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { PencilFill, TrashFill } from "react-bootstrap-icons";
 import AppButton from "../button/AppButton";
 import style from "./note-form.module.css";
 
-const NoteForm = ({ title }) => {
+const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
+  const [note, setNote] = useState({ title: "", content: "" });
+  //   const [disableBtn, setDisableBtn] = useState(true);
+
+  function handleValueChange(event) {
+    setNote((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  }
+
+  function submit() {
+    handleSubmit({
+      ...note,
+      created_at: new Date().toLocaleDateString(),
+    });
+    setNote({ title: "", content: "" });
+  }
+
   const ActionIcons = (
     <>
       <div className="col-1">
-        <PencilFill className={style.icon} />
+        {handleEdit && <PencilFill className={style.icon} />}
       </div>
       <div className="col-1">
-        <TrashFill className={style.icon} />
+        {handleDelete && <TrashFill className={style.icon} />}
       </div>
     </>
   );
@@ -23,7 +38,9 @@ const NoteForm = ({ title }) => {
       <input
         type="text"
         id="note-title"
+        onChange={handleValueChange}
         name="title"
+        value={note.title}
         className="form-control"
       />
     </>
@@ -35,7 +52,9 @@ const NoteForm = ({ title }) => {
         Content
       </label>
       <textarea
+        value={note.content}
         type="text"
+        onChange={handleValueChange}
         id="note-content"
         name="content"
         className="form-control"
@@ -46,7 +65,7 @@ const NoteForm = ({ title }) => {
 
   const FormButton = (
     <div className={style.btn}>
-      <AppButton>Submit</AppButton>
+      <AppButton action={submit}>Submit</AppButton>
     </div>
   );
   return (
@@ -59,7 +78,7 @@ const NoteForm = ({ title }) => {
       </div>
       <div className="mb-3 col-xs-12 col-md-4">{TitleInput}</div>
       <div className="mb-3">{ContentInput}</div>
-      {FormButton}
+      {handleSubmit && FormButton}
     </div>
   );
 };

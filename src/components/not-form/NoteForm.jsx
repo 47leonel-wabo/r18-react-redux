@@ -20,10 +20,13 @@ const NoteForm = ({
   handleDelete,
   handleSubmit,
 }) => {
-  const [note, setNote] = useState({ title: "", content: "" });
+  const [note, setNote] = useState({
+    title: editableNote?.title || "",
+    content: editableNote?.content || "",
+  });
   const [formErrors, setFormErrors] = useState({
-    title: true,
-    content: true,
+    title: editableNote?.title ? undefined : true,
+    content: editableNote?.content ? undefined : true,
   });
 
   function handleValueChange(event) {
@@ -110,26 +113,24 @@ const NoteForm = ({
 
   const FormButton = (
     <div className={style.btn}>
-      {isEditable && (
-        <AppButton action={submit} disabled_={disableBtn()}>
-          Submit
-        </AppButton>
-      )}
+      <AppButton action={submit} disabled_={disableBtn()}>
+        Submit
+      </AppButton>
     </div>
   );
   return (
     <div className={style.container}>
       <div className="row justify-content-space-between">
         <div className="col-10">
-          <h3 className="mb-3">{noteTitle}</h3>
+          <h3 className="mb-3">{isEditable ? `Edit note mode` : noteTitle}</h3>
         </div>
         {ActionIcons}
       </div>
       <div className="mb-3 col-xs-12 col-md-4">{isEditable && TitleInput}</div>
       <div className="mb-3">
-        {isEditable ? ContentInput : editableNote.content}
+        {isEditable ? ContentInput : <pre>{editableNote.content}</pre>}
       </div>
-      {handleSubmit && FormButton}
+      {handleSubmit && isEditable && FormButton}
     </div>
   );
 };

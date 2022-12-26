@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import NoteForm from "../../components/not-form/NoteForm";
@@ -7,6 +7,7 @@ import details from "./details.module.css";
 
 const NoteDetails = () => {
   const { id } = useParams();
+  const [editNoteMode, setEditNoteMode] = useState(false);
   const note = useSelector(notesSelector).find(
     (n) => n.id === Number.parseInt(id)
   );
@@ -19,10 +20,10 @@ const NoteDetails = () => {
     <div className={details.container}>
       <NoteForm
         noteTitle={note.title}
-        isEditable={false}
+        isEditable={editNoteMode}
         editableNote={note}
         handleDelete={() => console.log("delete")}
-        handleEdit={() => console.log("edit")}
+        handleEdit={() => setEditNoteMode((prev) => !prev)}
         handleSubmit={() => console.log("submit")}
       />
     </div>

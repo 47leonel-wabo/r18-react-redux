@@ -18,7 +18,7 @@ const NoteCard = ({
   }
   return (
     <div
-      className={`card ${style.container}`}
+      className={`card mt-2 ${style.container}`}
       style={{
         width: "18rem",
         height: "15rem",

@@ -12,7 +12,14 @@ const VALIDATOR = {
     ValidatorService.min(value, 3) || ValidatorService.max(value, 255),
 };
 
-const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
+const NoteForm = ({
+  noteTitle,
+  isEditable = true,
+  editableNote,
+  handleEdit,
+  handleDelete,
+  handleSubmit,
+}) => {
   const [note, setNote] = useState({ title: "", content: "" });
   const [formErrors, setFormErrors] = useState({
     title: true,
@@ -54,10 +61,14 @@ const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
   const ActionIcons = (
     <>
       <div className="col-1">
-        {handleEdit && <PencilFill className={style.icon} />}
+        {handleEdit && (
+          <PencilFill onClick={handleEdit} className={style.icon} />
+        )}
       </div>
       <div className="col-1">
-        {handleDelete && <TrashFill className={style.icon} />}
+        {handleDelete && (
+          <TrashFill onClick={handleDelete} className={style.icon} />
+        )}
       </div>
     </>
   );
@@ -99,21 +110,25 @@ const NoteForm = ({ title, handleEdit, handleDelete, handleSubmit }) => {
 
   const FormButton = (
     <div className={style.btn}>
-      <AppButton action={submit} disabled_={disableBtn()}>
-        Submit
-      </AppButton>
+      {isEditable && (
+        <AppButton action={submit} disabled_={disableBtn()}>
+          Submit
+        </AppButton>
+      )}
     </div>
   );
   return (
     <div className={style.container}>
       <div className="row justify-content-space-between">
         <div className="col-10">
-          <h3 className="mb-3">{title}</h3>
+          <h3 className="mb-3">{noteTitle}</h3>
         </div>
         {ActionIcons}
       </div>
-      <div className="mb-3 col-xs-12 col-md-4">{TitleInput}</div>
-      <div className="mb-3">{ContentInput}</div>
+      <div className="mb-3 col-xs-12 col-md-4">{isEditable && TitleInput}</div>
+      <div className="mb-3">
+        {isEditable ? ContentInput : editableNote.content}
+      </div>
       {handleSubmit && FormButton}
     </div>
   );

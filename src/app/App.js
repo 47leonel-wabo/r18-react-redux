@@ -9,12 +9,11 @@ import "./App.css";
 function App({ history }) {
   const dispatch = useDispatch();
 
-  const getNotes = async () => {
-    const notes = await NoteApi.fetchNotes();
-    dispatch(setNotes(notes));
-  };
-
   useEffect(() => {
+    const getNotes = async () => {
+      const notes = await NoteApi.fetchNotes();
+      dispatch(setNotes(notes));
+    };
     getNotes();
   }, []);
 

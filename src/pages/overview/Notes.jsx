@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import NoteApi from "../../api/note-api";
 import NotesList from "../../container/notes-list/NotesList";
 import { deleteNote, notesSelector } from "../../store/note/note-slice";
@@ -18,9 +18,16 @@ const Notes = () => {
       await NoteApi.deleteNoteById(note.id);
       dispatch(deleteNote(note));
     }
-
-    // navigate("/");
   };
+
+  if (notes.length === 0) {
+    return (
+      <div className={style.empty}>
+        <NavLink to={`/note/new`}>Create note</NavLink>
+        <p>No notes to display, please create new note</p>
+      </div>
+    );
+  }
 
   return (
     <div className={style.container}>

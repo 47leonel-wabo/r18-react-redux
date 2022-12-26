@@ -1,28 +1,10 @@
 {
   "notes": [
     {
-      "title": "My first note",
-      "content": "My first note description here!",
-      "created_at": "12/25/2022",
-      "id": 3
-    },
-    {
-      "title": "Victory - update",
-      "content": "this is a new content updated",
+      "title": "React project",
+      "content": "React homework with Mr Phillip at 3 pm\n\ntake ya computer",
       "created_at": "12/26/2022",
-      "id": 4
-    },
-    {
-      "title": "Vector - 2",
-      "content": "eee\n\nalso updated !!",
-      "created_at": "12/26/2022",
-      "id": 5
-    },
-    {
-      "title": "Another Note",
-      "content": "Another content 24\n\nThis one was updated today!",
-      "created_at": "12/26/2022",
-      "id": 6
+      "id": 1
     }
   ]
 }

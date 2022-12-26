@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import NoteApi from "../../api/note-api";
 import NoteForm from "../../components/not-form/NoteForm";
-import { notesSelector } from "../../store/note/note-slice";
+import { notesSelector, updateNote } from "../../store/note/note-slice";
 import details from "./details.module.css";
 
 const NoteDetails = () => {
@@ -11,6 +12,13 @@ const NoteDetails = () => {
   const note = useSelector(notesSelector).find(
     (n) => n.id === Number.parseInt(id)
   );
+  const dispatch = useDispatch();
+
+  async function handleNoteUpdate(targetedNote) {
+    const updatedNote = await NoteApi.updateNotById(note.id, targetedNote);
+    dispatch(updateNote(updatedNote));
+    setEditNoteMode(false);
+  }
 
   if (!note) {
     return <p>Loading...</p>;
@@ -24,7 +32,7 @@ const NoteDetails = () => {
         editableNote={note}
         handleDelete={() => console.log("delete")}
         handleEdit={() => setEditNoteMode((prev) => !prev)}
-        handleSubmit={() => console.log("submit")}
+        handleSubmit={handleNoteUpdate}
       />
     </div>
   );

@@ -27,12 +27,13 @@ class NoteApi {
     return response.data;
   }
 
-  static async updateNotById(noteData) {
-    const response = await axios.patch(
-      `${BASE_URL}/${noteData.id}`,
-      noteData,
-      {}
-    );
+  static async updateNotById(noteId, noteData) {
+    // console.log("update api called with", noteData);
+    const response = await axios.patch(`${BASE_URL}/${noteId}`, noteData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   }
 }

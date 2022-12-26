@@ -15,10 +15,16 @@ const noteSlice = createSlice({
         ...action.payload,
       });
     },
+    updateNote: (currentSlice, action) => {
+      const targetIndex = currentSlice.noteList.findIndex(
+        (note) => note.id === action.payload.id
+      );
+      currentSlice.noteList[targetIndex] = action.payload;
+    },
   },
 });
 
 export const notesSelector = (state) => state.NOTES.noteList;
 
 export default noteSlice.reducer;
-export const { setNotes, addNote } = noteSlice.actions;
+export const { setNotes, addNote, updateNote } = noteSlice.actions;

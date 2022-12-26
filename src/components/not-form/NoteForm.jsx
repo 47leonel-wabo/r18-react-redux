@@ -58,6 +58,7 @@ const NoteForm = ({
       ...note,
       created_at: new Date().toLocaleDateString(),
     });
+
     setNote({ title: "", content: "" });
   }
 

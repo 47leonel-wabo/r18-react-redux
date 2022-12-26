@@ -1,18 +1,6 @@
 {
   "notes": [
     {
-      "id": 1,
-      "title": "Note title",
-      "content": "The note content",
-      "created_at": "21/12/2022"
-    },
-    {
-      "id": 2,
-      "title": "Note title 2",
-      "content": "The note content 2",
-      "created_at": "24/12/2022"
-    },
-    {
       "title": "My first note",
       "content": "My first note description here!",
       "created_at": "12/25/2022",
@@ -32,7 +20,7 @@
     },
     {
       "title": "Another Note",
-      "content": "Another content 23\n\nThis one was updated today!",
+      "content": "Another content 24\n\nThis one was updated today!",
       "created_at": "12/26/2022",
       "id": 6
     }

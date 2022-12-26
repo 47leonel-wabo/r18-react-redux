@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./list.module.css";
 import NoteCard from "../../components/card/NoteCard";
+import style from "./list.module.css";
 
 const NotesList = ({ notes, handleClick, handleDelete }) => {
   return (

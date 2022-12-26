@@ -21,10 +21,15 @@ const noteSlice = createSlice({
       );
       currentSlice.noteList[targetIndex] = action.payload;
     },
+    deleteNote: (currentSlice, action) => {
+      currentSlice.noteList = currentSlice.noteList.filter(
+        (note) => note.id !== action.payload.id
+      );
+    },
   },
 });
 
 export const notesSelector = (state) => state.NOTES.noteList;
 
 export default noteSlice.reducer;
-export const { setNotes, addNote, updateNote } = noteSlice.actions;
+export const { setNotes, addNote, updateNote, deleteNote } = noteSlice.actions;

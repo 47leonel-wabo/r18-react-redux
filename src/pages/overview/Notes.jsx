@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import NoteApi from "../../api/note-api";
+import SearchBar from "../../components/search-bar/SearchBar";
 import NotesList from "../../container/notes-list/NotesList";
 import { deleteNote, notesSelector } from "../../store/note/note-slice";
 import style from "./notes.module.css";
@@ -10,6 +11,7 @@ const Notes = () => {
   const notes = useSelector(notesSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [searchTerms, setSearchTerms] = useState("");
 
   const handleClick = (note) => navigate(`note/${note.id}`);
 
@@ -20,6 +22,14 @@ const Notes = () => {
     }
   };
 
+  const handleSearch = (event) => {
+    setSearchTerms(event.target.value.trim());
+  };
+  const filteredNoteList = notes.filter(
+    (note) =>
+      note.title.trim().toLowerCase().includes(searchTerms.toLowerCase()) ||
+      note.content.trim().toLowerCase().includes(searchTerms.toLowerCase())
+  );
   if (notes.length === 0) {
     return (
       <div className={style.empty}>
@@ -30,13 +40,16 @@ const Notes = () => {
   }
 
   return (
-    <div className={style.container}>
-      <NotesList
-        notes={notes}
-        handleClick={handleClick}
-        handleDelete={handleDelete}
-      />
-    </div>
+    <>
+      <SearchBar handleChange={handleSearch} />
+      <div className={style.container}>
+        <NotesList
+          notes={filteredNoteList}
+          handleClick={handleClick}
+          handleDelete={handleDelete}
+        />
+      </div>
+    </>
   );
 };
 

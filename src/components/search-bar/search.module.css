@@ -1,0 +1,20 @@
+.container {
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.in {
+  width: 450px;
+  border-radius: 8px;
+  border: none;
+  padding: 2px 8px;
+}
+.in::placeholder {
+  font-size: 14px;
+  font-family: Lato;
+  font-weight: 500;
+}
+.in:focus {
+  outline-width: 0;
+}
